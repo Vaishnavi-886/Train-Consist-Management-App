@@ -17,5 +17,11 @@ public class TrainApp {
 
         System.out.println("After adding bogies:");
         System.out.println("Total bogies: " + consist.size());
+
+        // UC3: Display all bogies
+        System.out.println("Train consist:");
+        for(String bogie : consist) {
+            System.out.println(bogie);
+        }
     }
 }
