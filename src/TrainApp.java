@@ -2,7 +2,8 @@ import java.util.*;
 
 public class TrainApp {
     public static void main(String[] args) {
-        // UC1: Initialize Train
+
+        // ================= UC1 =================
         System.out.println("=== Train Consist Management App ===");
 
         List<String> consist = new ArrayList<>();
@@ -10,20 +11,17 @@ public class TrainApp {
         System.out.println("Train consist initialized.");
         System.out.println("Initial bogie count: " + consist.size());
 
-        // UC2: Add Passenger Bogies
+
+        // ================= UC2 =================
         consist.add("Sleeper");
         consist.add("AC Chair");
         consist.add("First Class");
 
-        System.out.println("After adding bogies:");
+        System.out.println("\nAfter adding bogies:");
         System.out.println("Total bogies: " + consist.size());
 
-        System.out.println("Train consist:");
-        for(String bogie : consist) {
-            System.out.println(bogie);
-        }
-        // UC3: Track Unique Bogie IDs using HashSet
 
+        // ================= UC3 =================
         Set<String> bogieIds = new HashSet<>();
 
         bogieIds.add("BG101");
@@ -32,32 +30,58 @@ public class TrainApp {
         bogieIds.add("BG101"); // duplicate
         bogieIds.add("BG102"); // duplicate
 
-        System.out.println("Unique Bogie IDs:");
-        for(String id : bogieIds) {
+        System.out.println("\nUnique Bogie IDs:");
+        for (String id : bogieIds) {
             System.out.println(id);
         }
-        // UC4: Maintain ordered train consist using LinkedList
 
+
+        // ================= UC4 =================
         LinkedList<String> train = new LinkedList<>();
 
-// Add bogies
         train.add("Engine");
         train.add("Sleeper");
         train.add("AC");
         train.add("Cargo");
         train.add("Guard");
 
-// Insert Pantry Car at position 2
-        train.add(2, "Pantry");
+        train.add(2, "Pantry"); // insert
 
-// Remove first and last bogie
-        train.removeFirst();
-        train.removeLast();
+        train.removeFirst(); // remove first
+        train.removeLast();  // remove last
 
-// Display final train consist
-        System.out.println("Final Train Consist:");
-        for(String bogie : train) {
+        System.out.println("\nFinal Train Consist (LinkedList):");
+        for (String bogie : train) {
             System.out.println(bogie);
+        }
+
+
+        // ================= UC5 =================
+        LinkedHashSet<String> formation = new LinkedHashSet<>();
+
+        formation.add("Engine");
+        formation.add("Sleeper");
+        formation.add("Cargo");
+        formation.add("Guard");
+        formation.add("Sleeper"); // duplicate
+
+        System.out.println("\nTrain Formation (LinkedHashSet):");
+        for (String bogie : formation) {
+            System.out.println(bogie);
+        }
+
+
+        // ================= UC6 =================
+        HashMap<String, Integer> capacityMap = new HashMap<>();
+
+        capacityMap.put("Sleeper", 72);
+        capacityMap.put("AC Chair", 60);
+        capacityMap.put("First Class", 40);
+        capacityMap.put("Cargo", 100);
+
+        System.out.println("\nBogie Capacity Details:");
+        for (Map.Entry<String, Integer> entry : capacityMap.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
         }
     }
 }
