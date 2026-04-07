@@ -14,72 +14,50 @@ class Bogie {
     }
 }
 
-// Main Class
 public class TrainConsistManagementApp {
 
-    // UC7 - Sort by Capacity
-    static void sortByCapacity(List<Bogie> list) {
-        list.sort(Comparator.comparingInt(b -> b.capacity));
-        System.out.println("\nSorted by Capacity:");
-        list.forEach(b -> System.out.println(b.name + " - " + b.capacity));
-    }
-
-    // UC8 - Filter Passenger Bogies
-    static void filterPassengerBogies(List<Bogie> list) {
-        System.out.println("\nPassenger Bogies:");
-        list.stream()
-                .filter(b -> b.type.equalsIgnoreCase("Passenger"))
-                .forEach(b -> System.out.println(b.name + " - " + b.capacity));
-    }
-
-    // UC9 - Group by Type
-    static void groupBogiesByType(List<Bogie> list) {
-        System.out.println("\nGrouped by Type:");
-        Map<String, List<Bogie>> map =
-                list.stream().collect(Collectors.groupingBy(b -> b.type));
-
-        map.forEach((type, bogies) -> {
-            System.out.println(type + ":");
-            bogies.forEach(b -> System.out.println("  " + b.name));
-        });
-    }
-
-    // UC10 - Count by Type
+    // UC10 - Count Bogies by Type
     static void countBogiesByType(List<Bogie> list) {
-        System.out.println("\nCount by Type:");
         Map<String, Long> count =
-                list.stream().collect(Collectors.groupingBy(b -> b.type, Collectors.counting()));
+                list.stream()
+                        .collect(Collectors.groupingBy(b -> b.type, Collectors.counting()));
 
+        System.out.println("Count by Type:");
         System.out.println(count);
     }
 
-    // UC11 - Max Capacity
+    // UC11 - Find Max Capacity Bogie
     static void findMaxCapacity(List<Bogie> list) {
-        System.out.println("\nMax Capacity Bogie:");
         Bogie max = list.stream()
                 .max(Comparator.comparingInt(b -> b.capacity))
                 .orElse(null);
 
+        System.out.println("\nMax Capacity Bogie:");
         if (max != null)
             System.out.println(max.name + " - " + max.capacity);
     }
 
     // UC12 - Total Capacity
     static void totalCapacity(List<Bogie> list) {
-        int total = list.stream().mapToInt(b -> b.capacity).sum();
+        int total = list.stream()
+                .mapToInt(b -> b.capacity)
+                .sum();
+
         System.out.println("\nTotal Capacity: " + total);
     }
 
-    // UC13 - Sort by Name
+    // UC13 - Sort Bogies by Name
     static void sortByName(List<Bogie> list) {
-        System.out.println("\nSorted by Name:");
         list.sort(Comparator.comparing(b -> b.name));
+
+        System.out.println("\nSorted by Name:");
         list.forEach(b -> System.out.println(b.name));
     }
 
-    // UC14 - Unique Types
+    // UC14 - Unique Bogie Types
     static void uniqueTypes(List<Bogie> list) {
         System.out.println("\nUnique Bogie Types:");
+
         list.stream()
                 .map(b -> b.type)
                 .distinct()
@@ -97,14 +75,11 @@ public class TrainConsistManagementApp {
         list.add(new Bogie("First Class", 40, "Passenger"));
         list.add(new Bogie("Goods Tank", 0, "Goods"));
 
-        // Calling all UCs
-        sortByCapacity(list);        // UC7
-        filterPassengerBogies(list); // UC8
-        groupBogiesByType(list);     // UC9
-        countBogiesByType(list);     // UC10
-        findMaxCapacity(list);       // UC11
-        totalCapacity(list);         // UC12
-        sortByName(list);            // UC13
-        uniqueTypes(list);           // UC14
+        // UC10 → UC14 Calls
+        countBogiesByType(list);
+        findMaxCapacity(list);
+        totalCapacity(list);
+        sortByName(list);
+        uniqueTypes(list);
     }
 }
