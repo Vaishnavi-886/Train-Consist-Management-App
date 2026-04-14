@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/TrainConsistApp.iml" filepath="$PROJECT_DIR$/TrainConsistApp.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/untitled.iml" filepath="$PROJECT_DIR$/untitled.iml" />
+>>>>>>> d26c1e4 (UC19 Binary Search and UC20 Exception Handling implemented)
     </modules>
   </component>
 </project>
